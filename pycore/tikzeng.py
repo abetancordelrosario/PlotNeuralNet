@@ -76,6 +76,333 @@ def to_ConvConvRelu( name, s_filer=256, n_filer=(64,64), offset="(0,0,0)", to="(
     };
 """
 
+# \pic[shift={"""+ offset +"""}] at """+ to +"""  {Box={name=Bottleneck,caption=Stage Layer 4,%
+# 		xlabel={{"","dummy"}},fill=,opacity=0.0,height=40,width=40,depth=40}};
+
+def to_elan1( name, s_filer=256, n_filer=64, offset="(0,0,0)", to="(0,0,0)", width=1, height=40, depth=40, caption=" " ):
+    name2="elan_c2"
+    name3="elan_c3"
+    name4="elan_c4"
+    return r"""
+
+
+\pic[shift={"""+ offset +"""}] at """+ to +""" 
+    {Box={
+        name=""" + name +""",
+        caption="""+ caption +r""",
+        xlabel={{"""+ str(n_filer) +""", }},
+        zlabel="""+ str(s_filer) +""",
+        fill=\ConvColor,
+        height="""+ str(height) +""",
+        width="""+ str(width) +""",
+        depth="""+ str(depth) +"""
+        }
+    };
+\pic[shift={(3,0,0)}] at """+ to +""" 
+    {RightBandedBox={
+        name="""+ name3 + """,
+        caption="""+ caption + """,
+        xlabel={{ """+ str(256) + """, }},
+        zlabel="""+ str(s_filer) +r""",
+        fill={rgb:white,1;black,3},
+        bandfill={rgb:white,1;black,2},
+        opacity="""+ str(0.5) +""",
+        height="""+ str(height) +""",
+        width="""+ str(6) +""",
+        depth="""+ str(depth) +"""
+        }
+    };
+\pic[shift={(5,0,0)}] at """+ to +""" 
+    {Box={
+        name=""" + name4 +""",
+        caption="""+ caption +r""",
+        xlabel={{"""+ str(256) +""", }},
+        zlabel="""+ str(s_filer) +""",
+        fill=\ConvColor,
+        height="""+ str(height) +""",
+        width="""+ str(6) +""",
+        depth="""+ str(depth) +"""
+        }
+    };
+"""
+
+def to_stage2( name, s_filer=256, n_filer=64, offset="(0,0,0)", to="(0,0,0)", width=1, height=40, depth=40, caption=" " ):
+    s2_1 = "s2_1"
+    s2_2 = "s2_2"
+    s2_3 = "s2_3"
+    s2_4 = "s2_4"
+    s2_5 = "s2_5"
+    return r"""
+\pic[shift={"""+ offset +"""}] at """+ to +""" 
+    {Box={
+        name=""" + name +""",
+        caption="""+ caption +r""",
+        xlabel={{"""+ str(128) +""", }},
+        zlabel="""+ str(s_filer) +""",
+        fill=\ConvColor,
+        height="""+ str(height) +""",
+        width="""+ str(width) +""",
+        depth="""+ str(depth) +"""
+        }
+    };
+
+\pic[shift={(5,0,0)}] at """+ to +""" 
+    {RightBandedBox={
+        name="""+ s2_1 + """,
+        caption="""+ caption + """,
+        xlabel={{ """+ str(256) + """, }},
+        zlabel="""+ str(s_filer) +r""",
+        fill={rgb:white,1;black,3},
+        bandfill={rgb:white,1;black,2},
+        opacity="""+ str(0.5) +""",
+        height="""+ str(height) +""",
+        width="""+ str(6) +""",
+        depth="""+ str(depth) +"""
+        }
+    };
+\pic[shift={(7,0,0)}] at """+ to +""" 
+    {Box={
+        name=""" + s2_2 +""",
+        caption="""+ caption +r""",
+        xlabel={{"""+ str(128) +""", }},
+        zlabel="""+ str(s_filer) +""",
+        fill=\ConvColor,
+        height="""+ str(height) +""",
+        width="""+ str(width) +""",
+        depth="""+ str(depth) +"""
+        }
+    };
+\pic[shift={(9,0,0)}] at """+ to +""" 
+    {RightBandedBox={
+        name="""+ s2_4 + """,
+        caption="""+ caption + """,
+        xlabel={{ """+ str(512) + """, }},
+        zlabel="""+ str(s_filer) +r""",
+        fill={rgb:white,1;black,3},
+        bandfill={rgb:white,1;black,2},
+        opacity="""+ str(0.5) +""",
+        height="""+ str(height) +""",
+        width="""+ str(7) +""",
+        depth="""+ str(depth) +"""
+        }
+    };
+\pic[shift={(11,0,0)}] at """+ to +""" 
+    {Box={
+        name=""" + s2_5 +""",
+        caption="""+ caption +r""",
+        xlabel={{"""+ str(512) +""", }},
+        zlabel="""+ str(s_filer) +""",
+        fill=\ConvColor,
+        height="""+ str(height) +""",
+        width="""+ str(7) +""",
+        depth="""+ str(depth) +"""
+        }
+    };
+"""
+
+
+def to_stage3( name, s_filer=256, n_filer=64, offset="(0,0,0)", to="(0,0,0)", width=1, height=40, depth=40, caption=" " ):
+    s3_1 = "s3_1"
+    s3_2 = "s3_2"
+    s3_3 = "s3_3"
+    s3_4 = "s3_4"
+    s3_5 = "s3_5"
+    return r"""
+\pic[shift={"""+ offset +"""}] at """+ to +""" 
+    {Box={
+        name=""" + name +""",
+        caption="""+ caption +r""",
+        xlabel={{"""+ str(256) +""", }},
+        zlabel="""+ str(s_filer) +""",
+        fill=\ConvColor,
+        height="""+ str(height) +""",
+        width="""+ str(6) +""",
+        depth="""+ str(depth) +"""
+        }
+    };
+
+\pic[shift={(5,0,0)}] at """+ to +""" 
+    {RightBandedBox={
+        name="""+ s3_1 + """,
+        caption="""+ caption + """,
+        xlabel={{ """+ str(256) + """, }},
+        zlabel="""+ str(s_filer) +r""",
+        fill={rgb:white,1;black,3},
+        bandfill={rgb:white,1;black,2},
+        opacity="""+ str(0.5) +""",
+        height="""+ str(height) +""",
+        width="""+ str(7) +""",
+        depth="""+ str(depth) +"""
+        }
+    };
+\pic[shift={(7,0,0)}] at """+ to +""" 
+    {Box={
+        name=""" + s3_2 +""",
+        caption="""+ caption +r""",
+        xlabel={{"""+ str(n_filer) +""", }},
+        zlabel="""+ str(s_filer) +""",
+        fill=\ConvColor,
+        height="""+ str(height) +""",
+        width="""+ str(6) +""",
+        depth="""+ str(depth) +"""
+        }
+    };
+\pic[shift={(9,0,0)}] at """+ to +""" 
+    {RightBandedBox={
+        name="""+ s3_4 + """,
+        caption="""+ caption + """,
+        xlabel={{ """+ str(1024) + """, }},
+        zlabel="""+ str(s_filer) +r""",
+        fill={rgb:white,1;black,3},
+        bandfill={rgb:white,1;black,2},
+        opacity="""+ str(0.5) +""",
+        height="""+ str(height) +""",
+        width="""+ str(9) +""",
+        depth="""+ str(depth) +"""
+        }
+    };
+\pic[shift={(12,0,0)}] at """+ to +""" 
+    {Box={
+        name=""" + s3_5 +""",
+        caption="""+ caption +r""",
+        xlabel={{"""+ str(1024) +""", }},
+        zlabel="""+ str(s_filer) +""",
+        fill=\ConvColor,
+        height="""+ str(height) +""",
+        width="""+ str(9) +""",
+        depth="""+ str(depth) +"""
+        }
+    };
+"""
+
+def to_stage4( name, s_filer=256, n_filer=64, offset="(0,0,0)", to="(0,0,0)", width=1, height=40, depth=40, caption=" " ):
+    s4_1 = "s4_1"
+    s4_2 = "s4_2"
+    s4_3 = "s4_3"
+    s4_4 = "s4_4"
+    s4_5 = "s4_5"
+    return r"""
+\pic[shift={"""+ offset +"""}] at """+ to +""" 
+    {Box={
+        name=""" + name +""",
+        caption="""+ caption +r""",
+        xlabel={{"""+ str(512) +""", }},
+        zlabel="""+ str(s_filer) +""",
+        fill=\ConvColor,
+        height="""+ str(height) +""",
+        width="""+ str(width) +""",
+        depth="""+ str(depth) +"""
+        }
+    };
+
+\pic[shift={(4,0,0)}] at """+ to +""" 
+    {RightBandedBox={
+        name="""+ s4_1 + """,
+        caption="""+ caption + """,
+        xlabel={{ """+ str(1024) + """, }},
+        zlabel="""+ str(s_filer) +r""",
+        fill={rgb:white,1;black,3},
+        bandfill={rgb:white,1;black,2},
+        opacity="""+ str(0.5) +""",
+        height="""+ str(height) +""",
+        width="""+ str(5) +""",
+        depth="""+ str(depth) +"""
+        }
+    };
+\pic[shift={(6,0,0)}] at """+ to +""" 
+    {Box={
+        name=""" + s4_2 +""",
+        caption="""+ caption +r""",
+        xlabel={{"""+ str(256) +""", }},
+        zlabel="""+ str(s_filer) +""",
+        fill=\ConvColor,
+        height="""+ str(height) +""",
+        width="""+ str(width) +""",
+        depth="""+ str(depth) +"""
+        }
+    };
+\pic[shift={(8,0,0)}] at """+ to +""" 
+    {RightBandedBox={
+        name="""+ s4_4 + """,
+        caption="""+ caption + """,
+        xlabel={{ """+ str(1024) + """, }},
+        zlabel="""+ str(s_filer) +r""",
+        fill={rgb:white,1;black,3},
+        bandfill={rgb:white,1;black,2},
+        opacity="""+ str(0.5) +""",
+        height="""+ str(height) +""",
+        width="""+ str(8) +""",
+        depth="""+ str(depth) +"""
+        }
+    };
+\pic[shift={(10,0,0)}] at """+ to +""" 
+    {Box={
+        name=""" + s4_5 +""",
+        caption="""+ caption +r""",
+        xlabel={{"""+ str(1024) +""", }},
+        zlabel="""+ str(s_filer) +""",
+        fill=\ConvColor,
+        height="""+ str(height) +""",
+        width="""+ str(8) +""",
+        depth="""+ str(depth) +"""
+        }
+    };
+"""
+
+def to_6conv( name, s_filer=256, n_filer=(64,64,64,64,64,64), offset="(0,0,0)", to="(0,0,0)", width=(2,2,2,2,2,2), height=40, depth=40, caption=" " ):
+    return r"""
+\pic[shift={ """+ offset +""" }] at """+ to +""" 
+    {RightBandedBox={
+        name="""+ name +""",
+        caption="""+ caption +""",
+        xlabel={{ """+ str(n_filer[0]) +""", """+ str(n_filer[1]) +""", """+ str(n_filer[1]) +""", """+ str(n_filer[1]) +""", """+ str(n_filer[1]) +""", """+ str(n_filer[1]) +""" }},
+        zlabel="""+ str(s_filer) +""",
+        fill=\ConvColor,
+        bandfill=\ConvReluColor,
+        height="""+ str(height) +""",
+        width={ """+ str(width[0]) +""" , """+ str(width[1]) +""", """+ str(width[1]) +""", """+ str(width[1]) +""", """+ str(width[1]) +""", """+ str(width[1]) +""" },
+        depth="""+ str(depth) +"""
+        }
+    };
+"""
+
+# def to_check_conv(name, s_filer=256, n_filer=(64, 64), offset="(0,0,0)", to="(0,0,0)", width=(2, 2), height=40, depth=40, caption=" "):
+#     # Definición de la capa de convolución
+#     convolution_layer = fr"""
+# \pic[shift={offset}] at {to} 
+#     {{RightBandedBox={{
+#         name={name},
+#         caption={caption},
+#         xlabel={{ {n_filer[0]}, {n_filer[1]}, {n_filer[1]}, {n_filer[1]}, {n_filer[1]}, {n_filer[1]} }},
+#         zlabel={s_filer},
+#         fill=\ConvColor,
+#         bandfill=\ConvReluColor,
+#         height={height},
+#         width={{ {width[0]} , {width[1]}, {width[1]}, {width[1]}, {width[1]}, {width[1]} }},
+#         depth={depth}
+#         }}
+#     }};
+# """
+#     return convolution_layer
+    # # Agregar conexiones en forma de parábola
+    # connections = []
+    # for i in range(5):
+    #     connection_line = fr"\draw[->] ({name}.east) to[out=0,in=180] (c{i+1}.west);"
+    #     connections.append(connection_line)
+
+    # # Unir las líneas de conexión en un solo bloque de texto
+    # connections_text = "\n".join(connections)
+
+    # # Combinar la capa de convolución y las conexiones
+    # result = convolution_layer + connections_text
+
+    # return result
+
+# Ejemplo de uso
+output_code = to_6conv("conv1", caption="Conv1")  # Puedes ajustar los parámetros según tus necesidades
+print(output_code)
+
+
 
 
 # Pool
