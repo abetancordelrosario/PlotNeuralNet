@@ -10,7 +10,7 @@ arch = [
     to_begin(),
     
     #input
-    to_input( '../imgs/010001_ir.jpg' ),
+    to_input( '../imgs/010001.jpg' ),
 
     #Stem layer
     to_Conv( name='ccr_b1', s_filer=640, n_filer=32, offset="(0,0,0)", to="(0,0,0)", width=2, height=40, depth=40  ),
@@ -42,7 +42,7 @@ arch = [
 
 
     #Stage layer 3
-    to_stage3( name='s3_0', s_filer=80, n_filer=512, offset="(3,0,0)", to="(pool2-east)", width=7, height=20, depth=20  ),
+    to_stage3( name='s3_0', s_filer=40, n_filer=512, offset="(3,0,0)", to="(pool2-east)", width=7, height=20, depth=20  ),
     to_skip( of='s3_0', to='s3_1', pos=1.25),
     to_skip( of='s3_2', to='s3_4', pos=1.25),
     to_connection( "pool2", "s3_0"),
@@ -51,7 +51,7 @@ arch = [
     to_Pool("pool3", offset="(0,0,0)", to="(s3_5-east)", height=15, depth=15),
 
     #Stage layer 4
-    to_stage4( name='s4_0', s_filer=40, n_filer=512, offset="(2,0,0)", to="(pool3-east)", width=7, height=15, depth=15  ),
+    to_stage4( name='s4_0', s_filer=20, n_filer=512, offset="(2,0,0)", to="(pool3-east)", width=7, height=15, depth=15  ),
     to_skip( of='s4_0', to='s4_1', pos=1.25),
     to_skip( of='s4_2', to='s4_4', pos=1.25),
     to_connection( "pool3", "s4_0"),
